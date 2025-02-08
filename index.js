@@ -11,6 +11,7 @@ const app = express();
 const upload = multer({ dest: "uploads/" });
 const port = 4000;
 const REPO_URL = "https://github.com/Aurigano/cms-data.git";
+//! Having issues fetching from the variable, directly add in the remote add origin call
 const BRANCH_NAME = "master";
 
 app.use(express.urlencoded({ extended: true }));
@@ -153,6 +154,8 @@ app.post("/upload-file", upload.single("file"), async (req, res) => {
     await git.init();
     try {
       console.log("REMOTE CALL");
+      //! CHANGE REPO URL HERE
+      //  should use REPO_URL
       await git.addRemote("origin", "https://github.com/Aurigano/cms-data.git");
       //Another way to add remote origin
       // await git.remote([
